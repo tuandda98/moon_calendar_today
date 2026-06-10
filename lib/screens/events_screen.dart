@@ -42,7 +42,7 @@ class _EventsScreenState extends State<EventsScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AddEventScreen())),
         backgroundColor: c.accent,
-        child: const Icon(Icons.add, color: Colors.white),
+        child: Icon(Icons.add, color: c.onAccent),
       ),
     );
   }

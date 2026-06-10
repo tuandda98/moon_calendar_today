@@ -341,7 +341,7 @@ class _ComposeSendScreenState extends State<ComposeSendScreen> {
               label: Text('Gửi Email${emailCount > 0 ? " ($emailCount người)" : ""}'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: c.accent,
-                foregroundColor: Colors.white,
+                foregroundColor: c.onAccent,
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.md)),
                 elevation: 0,
@@ -358,7 +358,7 @@ class _ComposeSendScreenState extends State<ComposeSendScreen> {
               label: Text('Gửi SMS${smsCount > 0 ? " ($smsCount người)" : ""}'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: _useEmail ? c.surfaceVariant : c.accent,
-                foregroundColor: _useEmail ? c.primary : Colors.white,
+                foregroundColor: _useEmail ? c.primary : c.onAccent,
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(AppRadius.md),

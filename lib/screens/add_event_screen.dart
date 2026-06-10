@@ -302,7 +302,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
               border: Border.all(color: selected ? c.textPrimary : Colors.transparent, width: 2),
               boxShadow: selected ? [BoxShadow(color: eventColors[i].withValues(alpha: 0.5), blurRadius: 8, spreadRadius: 1)] : null,
             ),
-            child: selected ? const Icon(Icons.check, color: Colors.white, size: 18) : null,
+            child: selected ? Icon(Icons.check, color: c.background, size: 18) : null,
           ),
         );
       }),
@@ -518,13 +518,13 @@ class _AddEventScreenState extends State<AddEventScreen> {
       onPressed: _saving ? null : () => _save(context),
       style: ElevatedButton.styleFrom(
         backgroundColor: c.accent,
-        foregroundColor: Colors.white,
+        foregroundColor: c.onAccent,
         padding: const EdgeInsets.symmetric(vertical: 16),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.md)),
         elevation: 0,
       ),
       child: _saving
-          ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
+          ? SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2, color: c.onAccent))
           : Text(
               widget.event != null ? 'Cập nhật' : 'Lưu sự kiện',
               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),

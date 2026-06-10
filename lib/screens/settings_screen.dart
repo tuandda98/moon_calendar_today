@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../providers/theme_provider.dart';
 import '../services/notification_service.dart';
 import '../theme/app_theme.dart';
+import '../widgets/theme_toggle.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -179,24 +180,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ],
                   ),
                 ),
-                Row(
-                  children: [
-                    _themeOption(
-                      c,
-                      icon: Icons.dark_mode_outlined,
-                      label: 'Tối',
-                      selected: !themeProvider.isLight,
-                      onTap: () => themeProvider.setMode(ThemeMode.dark),
-                    ),
-                    const SizedBox(width: 8),
-                    _themeOption(
-                      c,
-                      icon: Icons.light_mode_outlined,
-                      label: 'Sáng',
-                      selected: themeProvider.isLight,
-                      onTap: () => themeProvider.setMode(ThemeMode.light),
-                    ),
-                  ],
+                ThemeToggle(
+                  isDark: !themeProvider.isLight,
+                  onChanged: (dark) => themeProvider.setMode(dark ? ThemeMode.dark : ThemeMode.light),
                 ),
               ],
             ),
@@ -206,28 +192,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  Widget _themeOption(AppColorScheme c, {required IconData icon, required String label, required bool selected, required VoidCallback onTap}) {
-    return GestureDetector(
-      onTap: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-        decoration: BoxDecoration(
-          color: selected ? c.accentGlow : c.surfaceVariant,
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: selected ? c.accent : c.border),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, size: 14, color: selected ? c.primary : c.textDim),
-            const SizedBox(width: 4),
-            Text(label, style: TextStyle(color: selected ? c.primary : c.textSecondary, fontSize: 12, fontWeight: selected ? FontWeight.w600 : FontWeight.w400)),
-          ],
-        ),
-      ),
-    );
-  }
 
   Widget _buildSectionLabel(AppColorScheme c, String text) {
     return Padding(
@@ -253,7 +217,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
         subtitle: Text(subtitle, style: TextStyle(color: c.textDim, fontSize: 12)),
         value: value,
         onChanged: onChanged,
-        activeThumbColor: c.accent,
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),

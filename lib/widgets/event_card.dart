@@ -36,8 +36,8 @@ class EventCard extends StatelessWidget {
           if (onSend != null)
             SlidableAction(
               onPressed: (_) => onSend?.call(),
-              backgroundColor: c.accentGlow,
-              foregroundColor: Colors.white,
+              backgroundColor: c.surfaceBright,
+              foregroundColor: c.textPrimary,
               icon: Icons.send_outlined,
               label: 'Gửi',
               borderRadius: const BorderRadius.only(
@@ -48,8 +48,8 @@ class EventCard extends StatelessWidget {
           if (onEdit != null)
             SlidableAction(
               onPressed: (_) => onEdit?.call(),
-              backgroundColor: c.accent,
-              foregroundColor: Colors.white,
+              backgroundColor: c.primaryDim,
+              foregroundColor: c.onAccent,
               icon: Icons.edit_outlined,
               label: 'Sửa',
               borderRadius: onSend == null
@@ -59,8 +59,8 @@ class EventCard extends StatelessWidget {
           if (onDelete != null)
             SlidableAction(
               onPressed: (_) => onDelete?.call(),
-              backgroundColor: c.eventRed,
-              foregroundColor: Colors.white,
+              backgroundColor: c.accent,
+              foregroundColor: c.onAccent,
               icon: Icons.delete_outline,
               label: 'Xóa',
               borderRadius: const BorderRadius.only(

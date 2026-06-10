@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 // ============================================================================
 //  MOON CALENDAR — DESIGN SYSTEM  ·  "Moonlight on Ink"
@@ -44,10 +43,10 @@ class AppMotion {
 
 // Static consts for non-widget uses (painters, etc.) — mirror the dark scheme.
 class AppColors {
-  static const background = Color(0xFF080810);
-  static const surface = Color(0xFF11111C);
-  static const surfaceVariant = Color(0xFF1A1A2A);
-  static const border = Color(0xFF2A2A40);
+  static const background = Color(0xFF000000);
+  static const surface = Color(0xFF0E0E16);
+  static const surfaceVariant = Color(0xFF17171F);
+  static const border = Color(0xFF262631);
   static const primary = Color(0xFFB8B8FF);
   static const primaryDim = Color(0xFF8E8ED8);
   static const accent = Color(0xFF5E5CE6);
@@ -111,49 +110,49 @@ class AppColorScheme {
 
   // ── DARK · "Moonlight on Ink" (default) ──────────────────────────────────
   static const dark = AppColorScheme._(
-    background: Color(0xFF080810),
-    surface: Color(0xFF11111C),
-    surfaceVariant: Color(0xFF1A1A2A),
-    surfaceBright: Color(0xFF24243A),
-    border: Color(0xFF2A2A40),
-    outlineStrong: Color(0xFF3C3C58),
-    primary: Color(0xFFB8B8FF),
-    primaryDim: Color(0xFF8E8ED8),
-    accent: Color(0xFF5E5CE6),
-    accentGlow: Color(0xFF23234A),
-    textPrimary: Color(0xFFF3F3FA),
-    textSecondary: Color(0xFFA9A9C0),
-    textDim: Color(0xFF6E6E88),
-    moonLight: Color(0xFFE9E9F7),
-    moonShadow: Color(0xFF06060E),
-    eventRed: Color(0xFFF0625C),
-    eventGold: Color(0xFFE7B85A),
-    eventBlue: Color(0xFF5BA8F0),
-    eventGreen: Color(0xFF4FC58C),
+    background: Color(0xFF000000),
+    surface: Color(0xFF1C1C1E),
+    surfaceVariant: Color(0xFF2C2C2E),
+    surfaceBright: Color(0xFF2C2C2E),
+    border: Color(0xFF38383A),
+    outlineStrong: Color(0xFF48484A),
+    primary: Color(0xFF0A84FF),
+    primaryDim: Color(0xFF409CFF),
+    accent: Color(0xFF0A84FF),
+    accentGlow: Color(0xFF0E2C4A),
+    textPrimary: Color(0xFFFFFFFF),
+    textSecondary: Color(0xFF98989F),
+    textDim: Color(0xFF636366),
+    moonLight: Color(0xFFD6D6DA),
+    moonShadow: Color(0xFF0A0A0A),
+    eventRed: Color(0xFFFF453A),
+    eventGold: Color(0xFFFF9F0A),
+    eventBlue: Color(0xFF0A84FF),
+    eventGreen: Color(0xFF30D158),
     brightness: Brightness.dark,
   );
 
   // ── LIGHT · "Daylight" ───────────────────────────────────────────────────
   static const light = AppColorScheme._(
-    background: Color(0xFFFAFAFD),
+    background: Color(0xFFF2F2F7),
     surface: Color(0xFFFFFFFF),
-    surfaceVariant: Color(0xFFEFEFF6),
-    surfaceBright: Color(0xFFE6E6F2),
-    border: Color(0xFFE3E3EC),
-    outlineStrong: Color(0xFFCFCFDD),
-    primary: Color(0xFF3A3A78),
-    primaryDim: Color(0xFF5A5A92),
-    accent: Color(0xFF5856D6),
-    accentGlow: Color(0xFFE8E8FB),
-    textPrimary: Color(0xFF16161F),
-    textSecondary: Color(0xFF494957),
-    textDim: Color(0xFF8A8A9A),
-    moonLight: Color(0xFFC9B998),
-    moonShadow: Color(0xFF1A1510),
-    eventRed: Color(0xFFD64A45),
-    eventGold: Color(0xFFC7972E),
-    eventBlue: Color(0xFF2E72C7),
-    eventGreen: Color(0xFF2E9B66),
+    surfaceVariant: Color(0xFFE9E9EB),
+    surfaceBright: Color(0xFFFFFFFF),
+    border: Color(0xFFD1D1D6),
+    outlineStrong: Color(0xFFC7C7CC),
+    primary: Color(0xFF007AFF),
+    primaryDim: Color(0xFF0066D6),
+    accent: Color(0xFF007AFF),
+    accentGlow: Color(0xFFE1EEFF),
+    textPrimary: Color(0xFF000000),
+    textSecondary: Color(0xFF8A8A8E),
+    textDim: Color(0xFFAEAEB2),
+    moonLight: Color(0xFFC7C7CC),
+    moonShadow: Color(0xFF1C1C1E),
+    eventRed: Color(0xFFFF3B30),
+    eventGold: Color(0xFFFF9500),
+    eventBlue: Color(0xFF007AFF),
+    eventGreen: Color(0xFF34C759),
     brightness: Brightness.light,
   );
 
@@ -163,17 +162,19 @@ class AppColorScheme {
 
   bool get isDark => brightness == Brightness.dark;
 
-  /// Color to place on top of [accent] fills (CTA labels/icons).
-  Color get onAccent => Colors.white;
+  /// Chữ/icon trên nền [accent] xanh systemBlue → trắng.
+  Color get onAccent => const Color(0xFFFFFFFF);
 
-  List<Color> get eventColors => [
-        eventRed,
-        eventGold,
-        eventBlue,
-        eventGreen,
-        isDark ? const Color(0xFF8E8CF0) : const Color(0xFF6B5BD6),
-        isDark ? const Color(0xFFEE9050) : const Color(0xFFD67A33),
-      ];
+  /// Bảng màu hệ thống iOS cho phân loại sự kiện (đỏ, cam, xanh, lục, tím, lam nhạt).
+  List<Color> get eventColors => isDark
+      ? const [
+          Color(0xFFFF453A), Color(0xFFFF9F0A), Color(0xFF0A84FF),
+          Color(0xFF30D158), Color(0xFFBF5AF2), Color(0xFF64D2FF),
+        ]
+      : const [
+          Color(0xFFFF3B30), Color(0xFFFF9500), Color(0xFF007AFF),
+          Color(0xFF34C759), Color(0xFFAF52DE), Color(0xFF5AC8FA),
+        ];
 }
 
 class AppTheme {
@@ -183,8 +184,7 @@ class AppTheme {
   static ThemeData _buildTheme(AppColorScheme c) {
     final isLight = c.brightness == Brightness.light;
 
-    final textTheme = GoogleFonts.beVietnamProTextTheme(
-      TextTheme(
+    final textTheme = TextTheme(
         displayLarge: TextStyle(color: c.textPrimary, fontSize: 32, fontWeight: FontWeight.w700, letterSpacing: -0.5, height: 1.1),
         displayMedium: TextStyle(color: c.textPrimary, fontSize: 28, fontWeight: FontWeight.w300, letterSpacing: 0),
         displaySmall: TextStyle(color: c.textPrimary, fontSize: 24, fontWeight: FontWeight.w300),
@@ -200,7 +200,6 @@ class AppTheme {
         labelLarge: TextStyle(color: c.textPrimary, fontSize: 15, fontWeight: FontWeight.w600, letterSpacing: 0.2),
         labelMedium: TextStyle(color: c.textSecondary, fontSize: 13, fontWeight: FontWeight.w600),
         labelSmall: TextStyle(color: c.textDim, fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 1.3),
-      ),
     );
 
     return ThemeData(
@@ -217,9 +216,9 @@ class AppTheme {
         surfaceContainerHigh: c.surfaceVariant,
         surfaceContainerHighest: c.surfaceBright,
         primary: c.accent,
-        onPrimary: Colors.white,
+        onPrimary: c.onAccent,
         secondary: c.primary,
-        onSecondary: isLight ? Colors.white : const Color(0xFF11111C),
+        onSecondary: c.onAccent,
         onSurface: c.textPrimary,
         onSurfaceVariant: c.textSecondary,
         outline: c.border,
@@ -249,15 +248,15 @@ class AppTheme {
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor: c.accent,
-        foregroundColor: Colors.white,
+        foregroundColor: c.onAccent,
         elevation: isLight ? 3 : 0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.lg)),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
           backgroundColor: WidgetStatePropertyAll(c.accent),
-          foregroundColor: const WidgetStatePropertyAll(Colors.white),
-          overlayColor: WidgetStatePropertyAll(Colors.white.withValues(alpha: 0.12)),
+          foregroundColor: WidgetStatePropertyAll(c.onAccent),
+          overlayColor: WidgetStatePropertyAll(c.onAccent.withValues(alpha: 0.10)),
           elevation: const WidgetStatePropertyAll(0),
           minimumSize: const WidgetStatePropertyAll(Size.fromHeight(52)),
           padding: const WidgetStatePropertyAll(EdgeInsets.symmetric(horizontal: AppSpace.xxl, vertical: AppSpace.lg)),
@@ -344,13 +343,15 @@ class AppTheme {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.md)),
       ),
       switchTheme: SwitchThemeData(
-        thumbColor: WidgetStateProperty.resolveWith((s) => s.contains(WidgetState.selected) ? Colors.white : c.textDim),
-        trackColor: WidgetStateProperty.resolveWith((s) => s.contains(WidgetState.selected) ? c.accent : c.surfaceVariant),
-        trackOutlineColor: WidgetStateProperty.resolveWith((s) => s.contains(WidgetState.selected) ? Colors.transparent : c.border),
+        thumbColor: const WidgetStatePropertyAll(Colors.white),
+        trackColor: WidgetStateProperty.resolveWith((s) => s.contains(WidgetState.selected)
+            ? c.accent
+            : (isLight ? const Color(0xFFE9E9EB) : const Color(0xFF39393D))),
+        trackOutlineColor: const WidgetStatePropertyAll(Colors.transparent),
       ),
       checkboxTheme: CheckboxThemeData(
         fillColor: WidgetStateProperty.resolveWith((s) => s.contains(WidgetState.selected) ? c.accent : Colors.transparent),
-        checkColor: const WidgetStatePropertyAll(Colors.white),
+        checkColor: WidgetStatePropertyAll(c.onAccent),
         side: BorderSide(color: c.outlineStrong),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
       ),

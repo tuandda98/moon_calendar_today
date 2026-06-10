@@ -69,39 +69,24 @@ class _MainShellState extends State<MainShell> {
       body: IndexedStack(index: _tab, children: _screens),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
+          color: c.surface,
           border: Border(top: BorderSide(color: c.border, width: 0.5)),
         ),
         child: BottomNavigationBar(
           currentIndex: _tab,
           onTap: (i) => setState(() => _tab = i),
           backgroundColor: c.surface,
-          selectedItemColor: c.primary,
+          selectedItemColor: c.accent,
           unselectedItemColor: c.textDim,
           type: BottomNavigationBarType.fixed,
           elevation: 0,
-          selectedLabelStyle: const TextStyle(fontSize: 11, fontWeight: FontWeight.w500),
-          unselectedLabelStyle: const TextStyle(fontSize: 11),
+          selectedFontSize: 10,
+          unselectedFontSize: 10,
           items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              activeIcon: Icon(Icons.home),
-              label: 'Hôm nay',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_month_outlined),
-              activeIcon: Icon(Icons.calendar_month),
-              label: 'Lịch',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.event_note_outlined),
-              activeIcon: Icon(Icons.event_note),
-              label: 'Sự kiện',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings_outlined),
-              activeIcon: Icon(Icons.settings),
-              label: 'Cài đặt',
-            ),
+            BottomNavigationBarItem(icon: Icon(Icons.home_outlined), activeIcon: Icon(Icons.home_rounded), label: 'Hôm nay'),
+            BottomNavigationBarItem(icon: Icon(Icons.calendar_today_outlined), activeIcon: Icon(Icons.calendar_today_rounded), label: 'Lịch'),
+            BottomNavigationBarItem(icon: Icon(Icons.event_note_outlined), activeIcon: Icon(Icons.event_note_rounded), label: 'Sự kiện'),
+            BottomNavigationBarItem(icon: Icon(Icons.settings_outlined), activeIcon: Icon(Icons.settings_rounded), label: 'Cài đặt'),
           ],
         ),
       ),
